@@ -2,7 +2,7 @@
   color-scheme: dark;
   --background: #141414;
   --foreground: #eeede9;
-  --muted: #a4a39e;
+  --muted: #bab9b3;
   --line: #383837;
   --accent: #ef805a;
   --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -19,6 +19,7 @@
 }
 
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-block: 24px; }
 
 body {
   margin: 0;
@@ -66,23 +67,27 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .monogram { font-size: 25px; font-weight: 500; letter-spacing: -2px; }
 .monogram span { color: var(--accent); margin-inline: 4px; font-weight: 300; }
 .header-actions { display: flex; align-items: center; gap: 27px; }
-.github-link { font-size: 14px; padding-block: 12px; }
-.github-link:hover { color: var(--accent); }
+.header-nav { display: flex; align-items: center; gap: 25px; }
+.header-nav a { font-size: 14px; padding-block: 12px; transition: color 180ms ease; }
+.header-nav a:hover, .header-nav a:active { color: var(--accent); }
 
 .theme-toggle {
   display: grid;
   place-items: center;
   width: 44px;
   height: 44px;
-  border: 1px solid var(--line);
+  position: relative;
+  border: 0;
   border-radius: 50%;
   color: var(--muted);
   background: transparent;
   cursor: pointer;
-  transition: color 180ms ease, border-color 180ms ease;
+  transition: color 180ms ease;
 }
-.theme-toggle svg { width: 20px; height: 20px; transition: transform 250ms ease; }
-.theme-toggle:hover { color: var(--foreground); border-color: var(--muted); }
+.theme-toggle::before { content: ""; position: absolute; inset: 5px; border: .75px solid var(--line); border-radius: 50%; transition: border-color 180ms ease; }
+.theme-toggle svg { width: 17px; height: 17px; transition: transform 250ms ease; }
+.theme-toggle:hover { color: var(--foreground); }
+.theme-toggle:hover::before { border-color: var(--muted); }
 .theme-toggle:hover svg { transform: rotate(25deg); }
 
 main {
@@ -126,6 +131,7 @@ main {
   background: var(--accent);
   transform: rotate(19deg);
   transition: transform 450ms cubic-bezier(.2, .7, .25, 1);
+  animation: slash-in 850ms 200ms cubic-bezier(.2, .7, .25, 1) backwards;
 }
 .wordmark:hover .signature-stroke { transform: rotate(0deg); }
 
@@ -153,13 +159,10 @@ main {
   font-size: 16px;
   line-height: 1.7;
 }
-.bio > span { display: inline-block; color: var(--muted); margin-top: 11px; }
 
 .site-footer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
+  display: grid;
+  gap: 27px;
   border-top: 1px solid var(--line);
   padding-block: 28px 34px;
 }
@@ -167,16 +170,25 @@ main {
 .contacts { display: flex; flex-wrap: wrap; gap: 26px 62px; }
 .contacts a { display: block; padding-block: 3px; min-width: 0; }
 .contact-label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 7px;
   margin-bottom: 8px;
   font-family: var(--mono);
   font-size: 12px;
   line-height: 1.5;
   color: var(--muted);
 }
-.contact-value { font-size: 15px; line-height: 1.6; overflow-wrap: anywhere; }
-.contacts a:hover .contact-value { text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--accent); }
-.footer-note { color: var(--muted); font-family: var(--mono); font-size: 12px; white-space: nowrap; line-height: 2; }
+.contact-value { font-size: 15px; line-height: 1.6; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: transparent; transition: text-decoration-color 180ms ease; }
+.contacts a:hover .contact-value, .contacts a:focus-visible .contact-value, .contacts a:active .contact-value { text-decoration-color: var(--accent); }
+.contact-arrow { display: inline-block; transition: transform 180ms ease, color 180ms ease; }
+.contacts a:hover .contact-arrow, .contacts a:focus-visible .contact-arrow, .contacts a:active .contact-arrow { color: var(--accent); transform: translate(2px, -2px); }
+.colophon { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+
+@keyframes slash-in {
+  from { transform: rotate(0deg); opacity: 0; }
+  to { transform: rotate(19deg); opacity: 1; }
+}
 
 @keyframes arrive {
   from { opacity: 0; transform: translateY(12px); }
@@ -188,32 +200,32 @@ main {
   .site-header { padding-block: 24px; }
   main { padding-block: 28px 45px; }
   .intro-label { margin-left: 3px; margin-bottom: 27px; }
-  .wordmark { font-size: 20vw; margin-bottom: 31px; }
+  .wordmark { font-size: 17.6vw; margin-bottom: 36px; }
   .introduction { gap: 30px; padding-top: 24px; }
   .role { font-size: 27px; }
   .bio { font-size: 15px; }
   .site-footer { align-items: flex-start; padding-block: 24px; }
   .contacts { gap: 23px 32px; }
-  .footer-note { display: none; }
 }
 
 @media (max-width: 520px) {
   .homepage { width: calc(100% - 44px); }
   .site-header { padding-block: 19px; }
-  .header-actions { gap: 16px; }
+  .header-actions { gap: 12px; }
+  .header-nav { gap: 18px; }
   main { padding-block: 22px 36px; }
   .intro-label { font-size: 12px; margin-bottom: 24px; }
-  .wordmark { font-size: 21vw; margin-bottom: 27px; }
+  .wordmark { font-size: 18.5vw; margin-bottom: 33px; }
   .introduction { grid-template-columns: 1fr; gap: 21px; padding-top: 24px; }
   .role { font-size: 27px; }
-  .role br { display: none; }
   .bio { max-width: 340px; font-size: 16px; line-height: 1.65; }
-  .bio > span { margin-top: 7px; }
   .contacts { gap: 20px; flex-direction: column; }
   .contact-label { margin-bottom: 3px; }
-  .site-footer { padding-block: 21px 25px; }
+  .site-footer { padding-block: 21px 25px; gap: 24px; }
+  .colophon { flex-direction: column; gap: 4px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }

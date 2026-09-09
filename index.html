@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#141414">
-  <meta name="description" content="VanTan. Aspiring iOS developer learning Swift and SwiftUI. A little corner of the internet to call my own.">
+  <meta name="description" content="VanTan. iOS developer building apps with Swift and SwiftUI, with a focus on clean interfaces and small details.">
   <meta property="og:title" content="VanTan — Personal homepage">
-  <meta property="og:description" content="Aspiring iOS developer. Learning Swift, exploring SwiftUI, and paying attention to the details.">
+  <meta property="og:description" content="Building iOS apps with Swift and SwiftUI, with a focus on clean interfaces and small details.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://vantan.tech/">
   <link rel="canonical" href="https://vantan.tech/">
@@ -21,7 +21,10 @@
     <header class="site-header">
       <span class="monogram" aria-label="VanTan">v<span aria-hidden="true">/</span>t</span>
       <div class="header-actions">
-        <a class="github-link" href="https://github.com/VanTan666" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="https://github.com/VanTan666" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="#contact">Contact</a>
+        </nav>
         <button class="theme-toggle" type="button" aria-label="Switch to light theme" hidden>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
@@ -35,23 +38,26 @@
       <p class="intro-label">A little corner of the internet.</p>
       <h1 class="wordmark">Van<em>Tan</em><span class="signature-stroke" aria-hidden="true"></span></h1>
       <div class="introduction">
-        <p class="role">Aspiring iOS <br>developer.</p>
-        <p class="bio">Learning Swift, exploring SwiftUI, and paying attention to the details.<br><span>Still figuring things out. Enjoying the process.</span></p>
+        <p class="role">iOS developer.</p>
+        <p class="bio">Building iOS apps with Swift and SwiftUI, with a focus on clean interfaces and small details.</p>
       </div>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id="contact" tabindex="-1">
       <nav class="contacts" aria-label="Get in touch">
         <a href="https://t.me/vantangg" target="_blank" rel="noopener noreferrer">
-          <span class="contact-label">Telegram</span>
+          <span class="contact-label">Telegram <span class="contact-arrow" aria-hidden="true">↗</span></span>
           <span class="contact-value">@vantangg</span>
         </a>
         <a href="mailto:cubetimeevery@gmail.com">
-          <span class="contact-label">Email</span>
+          <span class="contact-label">Email <span class="contact-arrow" aria-hidden="true">↗</span></span>
           <span class="contact-value">cubetimeevery@gmail.com</span>
         </a>
       </nav>
-      <span class="footer-note">Swift / SwiftUI</span>
+      <div class="colophon">
+        <span>VanTan · 2026</span>
+        <span>Swift enthusiast, web occasionally.</span>
+      </div>
     </footer>
   </div>
 </body>
