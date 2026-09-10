@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://vantan.tech/">
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/style.css">
-  <script src="./assets/main.js" defer></script>
+  <script src="./assets/main.js?v=code-once" defer></script>
   <title>VanTan — Personal homepage</title>
 </head>
 <body>
@@ -36,10 +36,25 @@
 
     <main id="main">
       <p class="intro-label">A little corner of the internet.</p>
-      <h1 class="wordmark">Van<em>Tan</em><span class="signature-stroke" aria-hidden="true"></span></h1>
+      <h1 class="wordmark"><span class="wordmark-first">Van</span><em>Tan</em><span class="signature-stroke" aria-hidden="true"></span></h1>
       <div class="introduction">
         <p class="role">iOS developer.</p>
         <p class="bio">Building iOS apps with Swift and SwiftUI, with a focus on clean interfaces and small details.</p>
+      </div>
+      <div class="code-window" aria-label="Animated SwiftUI code example">
+        <div class="code-toolbar">
+          <span><span class="code-file-icon" aria-hidden="true">&lt;/&gt;</span> HelloView.swift</span>
+          <button class="code-pause" type="button" aria-label="Pause code animation" hidden>Pause</button>
+        </div>
+        <pre class="code-editor" aria-label="SwiftUI view displaying Hello, world."><code><span class="code-line"><span class="code-text"><span class="syntax-keyword">import</span> <span class="syntax-type">SwiftUI</span></span></span>
+<span class="code-line"><span class="code-text"></span></span>
+<span class="code-line"><span class="code-text"><span class="syntax-keyword">struct</span> <span class="syntax-type">HelloView</span>: <span class="syntax-type">View</span> {</span></span>
+<span class="code-line"><span class="code-text">    <span class="syntax-keyword">var</span> body: <span class="syntax-keyword">some</span> <span class="syntax-type">View</span> {</span></span>
+<span class="code-line"><span class="code-text">        <span class="syntax-type">Text</span>(<span class="syntax-string">"Hello, world."</span>)</span></span>
+<span class="code-line"><span class="code-text">            .<span class="syntax-method">font</span>(.<span class="syntax-method">title</span>)</span></span>
+<span class="code-line"><span class="code-text">            .<span class="syntax-method">padding</span>()</span></span>
+<span class="code-line"><span class="code-text">    }</span></span>
+<span class="code-line"><span class="code-text">}</span></span></code></pre>
       </div>
     </main>
 
